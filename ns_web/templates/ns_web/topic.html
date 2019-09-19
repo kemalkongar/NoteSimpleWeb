@@ -1,0 +1,31 @@
+{% extends 'ns_web/base.html' %}
+
+{% block page_header %}
+    <h3>{{ topic}}</h3>
+{% endblock page_header %}
+
+{% block content %}
+    <p>
+        <a href="{% url 'ns_web:new_entry' topic.id %}">Add new entry</a>
+    </p>
+    {% for entry in entries %}
+        <div class="card mb-3">
+            <h4 class="card-header">
+                {{ entry.date_added|date:'M d, Y H:i' }}
+                <small><a href="{% url 'ns_web:edit_entry' entry.id %}">
+                    edit entry</a></small>
+                <small><a href="{% url 'ns_web:delete_entry' entry.id %}">
+                    delete entry</a></small>
+            </h4>
+            <div class="card-body">
+                {{ entry.text|linebreaks }}
+            </div>
+        </div>
+    {% empty %}
+        <p>There are no entries for this topic yet.</p>
+    {% endfor %}
+    <a href="{% url 'ns_web:delete_topic' topic.id %}">
+            Delete Topic
+        </a>
+
+{% endblock content %}

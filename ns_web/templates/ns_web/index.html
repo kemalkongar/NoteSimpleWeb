@@ -1,0 +1,14 @@
+{% extends "ns_web/base.html" %}
+
+{% block page_header %}
+    <div class="jumbotron">
+        <h1 class="display-3">Note taking, simplified.</h1>
+
+        <p class="lead">Keep track of your notes in a secure an private way!
+        NoteSimple is a web-app that is completely free and easy to use. Whether it be diary
+        entries or TODO lists, you can access them as long as you are online.</p>
+
+        <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+           role="button">Register &raquo;</a>
+    </div>
+{% endblock page_header %}
